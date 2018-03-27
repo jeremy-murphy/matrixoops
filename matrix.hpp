@@ -87,7 +87,7 @@ private:
 
 template <typename T, int Rows, int Columns>
 Matrix<T, Rows, Columns> operator+(Matrix<T, Rows, Columns> x, Matrix<T, Rows, Columns> const &y)
-noexcept(noexcept(std::declval<T&>() += std::declval<T&>()))
+noexcept(noexcept(std::declval<Matrix<T, Rows, Columns>&>() += std::declval<Matrix<T, Rows, Columns> const &>()))
 {
     x += y;
     return x;
@@ -95,6 +95,7 @@ noexcept(noexcept(std::declval<T&>() += std::declval<T&>()))
 
 
 template <typename T, int Rows, int Columns>
+constexpr
 bool operator==(Matrix<T, Rows, Columns> const &x, Matrix<T, Rows, Columns> const &y)
 noexcept(noexcept(std::declval<T&>() != std::declval<T&>()))
 {
@@ -106,6 +107,7 @@ noexcept(noexcept(std::declval<T&>() != std::declval<T&>()))
 }
 
 template <typename T, int Rows, int Columns>
+constexpr
 bool operator!=(Matrix<T, Rows, Columns> const &x, Matrix<T, Rows, Columns> const &y)
 noexcept(noexcept(x == y))
 {
